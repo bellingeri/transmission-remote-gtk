@@ -419,7 +419,7 @@ gboolean trg_prefs_save(TrgPrefs *p)
     g_free(dirName);
 
     if (!success) {
-        g_error("Problem creating parent directory (permissions?) for: %s\n", priv->file);
+        g_warning("Problem creating parent directory (permissions?) for: %s", priv->file);
         return success;
     }
 
@@ -445,7 +445,7 @@ gboolean trg_prefs_save(TrgPrefs *p)
     }
 
     if (!success)
-        g_error("Problem writing configuration file (permissions?) to: %s", priv->file);
+        g_warning("Problem writing configuration file (permissions?) to: %s", priv->file);
     else if (isNew)
         g_chmod(priv->file, 384);
 
